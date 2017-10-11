@@ -11,7 +11,12 @@ describe BankAccount do
     expect(account.balance).to eq(500)
   end
 
-  it "can make deposits"
+  it "can make deposits" do
+      account = BankAccount.new(500, "Sarah")
+      account.deposit(250)
+      expect(account.balance).to eq(750)
+  end
+    
   it "can make withdrawals"
   it "can transfer funds to another bank account"
   it " has a minimum opening balance"
