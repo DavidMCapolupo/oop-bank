@@ -10,10 +10,16 @@ class BankAccount
         @balance += amount
     end
     
-    def withdrawal(amount2)
-        @balance -= amount2
+    def withdraw(amount)
+        @balance -= amount
     end
     
+    def transfer(amount, account)
+        withdraw(amount)
+        account.deposit(amount)
+    end
+    
+        
 end
 
 
