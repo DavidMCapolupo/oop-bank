@@ -1,5 +1,5 @@
 require './bank_account'
-#try let(:account) {BankAccount.new} - for dry code
+#try let(:account) {BankAccount.new} - for DRY code
 describe BankAccount do
   it "is created with an opening balance and the name of the client" do
     account = BankAccount.new(500, "Sarah") 
@@ -33,8 +33,11 @@ describe BankAccount do
       expect(account_two.balance).to eq(700)
   end
       
-      
-  it " has a minimum opening balance"
+      #we put the below test on one line because we want the test to be met when we run the initializer
+  it "throws an error if minimum opening balance of 200 is not met" do
+      expect { BankAccount.new(100, "Sarah") }.to raise_error(ArgumentError)
+  end
+    
   it "allows the user to change the minimum balance"
 end
 
