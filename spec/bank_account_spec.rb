@@ -1,3 +1,4 @@
+
 require './bank_account'
 #try let(:account) {BankAccount.new} - for DRY code
 describe BankAccount do
@@ -38,7 +39,12 @@ describe BankAccount do
       expect { BankAccount.new(100, "Sarah") }.to raise_error(ArgumentError)
   end
     
-  it "allows the user to change the minimum balance"
+  it "allows the user to change the minimum balance" do
+      BankAccount.update_opening_balance(500)
+      expect { BankAccount.new(300, "Sarah") }.to raise_error(ArgumentError)
+      expect { BankAccount.new(500, "Sarah") }.to_not raise_error(ArgumentError)
+end
+    
 end
 
 

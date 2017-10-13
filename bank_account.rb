@@ -1,6 +1,6 @@
 
 class BankAccount
-	attr_accessor :balance
+	attr_reader :balance
     @@minimum_opening_balance = 200
     #we use @@ because in this case, minimum_opening_balance is a class method
 
@@ -19,11 +19,14 @@ class BankAccount
         @balance -= amount
     end
     
-    def transfer(amount, account)
+    def transfer(amount, other_account)
         withdraw(amount)
-        account.deposit(amount)
+        other_account.deposit(amount)
     end
     
+    def self.update_opening_balance(amount)
+        @@minimum_opening_balance = amount
+    end
     
         
 end
